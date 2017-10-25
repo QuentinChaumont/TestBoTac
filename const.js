@@ -14,47 +14,53 @@ const tab_jour = new Array("Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam");
 
 exports.textMenu = "Alors, qu'est-ce qu'on fait " + name + " ??";
 exports.textDefault = "🤷‍ Oupssi, pas compris ce que t'as dit... Pas de panique je m'améliore de jour en jour 💪  Pour contacter mes créateurs c'est ici que ça se passe : contact@maitika.com";
-exports.quickMenu = [
+const quickMenu = [
   {
     content_type:"text",
-    title:"Sortir",
+    title:"📅 Sortir",
     payload:""
   },
   {
     content_type:"text",
-    title:"Boire",
+    title:"💧 Boire",
     payload:""
   },
   {
     content_type:"text",
-    title:"Manger",
+    title:"🍖 Manger",
     payload:""
   },
   {
     content_type:"text",
-    title:"Promo",
+    title:"💰 Promo",
     payload:""
   },
   {
     content_type:"text",
-    title:"Blog",
+    title:"📚 Blog",
     payload:""
   },
   {
     content_type:"text",
-    title:"Découvrir",
+    title:"🔮 Découvrir",
     payload:""
   },
   {
     content_type:"text",
-    title:"Paramètres",
+    title:"⚙️ Paramètres",
     payload:""
   }
 ];
-
+exports.quickMenu = quickMenu;
 
 exports.textSortir = 'Quand est-ce qu\'on s\'bouge '+ name + " ??";
 exports.quickSortir = [
+
+  {
+    content_type:"text",
+    title:"Halloween 👻", //Il faudra faire un appel spécial ici pour l'event spécial
+    payload:"SortieSpecial"
+  },
   {
     content_type:"text",
     title:"Aujourd'hui",
@@ -87,7 +93,46 @@ exports.quickSortir = [
   },
   {
     content_type:"text",
-    title:"Paramètres",
+    title:"Menu",
     payload:""
   }
 ];
+
+exports.textBoire = "Pour savoir qu'un verre était de trop, encore faut-il l'avoir bu ! 🍻";
+
+exports.messageSpecial =
+{
+"quick_replies": quickMenu,
+"attachment":{
+  "type":"template",
+  "payload":{
+    "template_type":"generic",
+    "elements":[
+       {
+        "title":"Welcome to Peter\'s Hats",
+        "subtitle":"We\'ve got the right hat for everyone.",
+        "image_url":"https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/22549764_2123427824337889_5105946660671338465_n.jpg?oh=29a6de979d6c533832491eba162e135b&oe=5A6A5CFB",
+        "buttons":[
+          {
+            "type":"postback",
+            "title":"Start Chatting",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD"
+          }
+          ]
+        },
+          {
+           "title":"Welcome to Peter\'s Hats",
+           "subtitle":"We\'ve got the right hat for everyone.",
+
+           "buttons":[
+             {
+               "type":"postback",
+               "title":"Start Chatting",
+               "payload":"DEVELOPER_DEFINED_PAYLOAD"
+            }
+          ]
+        }
+    ]
+  }
+}
+}

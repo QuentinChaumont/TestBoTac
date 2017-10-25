@@ -82,9 +82,16 @@ function receivedMessage(event) {
       case 'Menu':
         sendMessage(senderID, constant.textMenu, constant.quickMenu);
         break;
-      case 'Sortir':
-        sendMessage(senderID, constant.textSortir, constant.quickSortir);
-        break;
+        case '📅 Sortir':
+          sendMessage(senderID, constant.textSortir, constant.quickSortir);
+          break;
+          case "Halloween 👻":
+            sendMessageEvent(senderID, constant.messageSpecial);
+            break;
+        case "💧 Boire":
+          sendMessage(senderID, constant.textBoire, null);
+          sendMessageEvent(senderID, null);
+          break;
 
       default:
         sendMessage(senderID, constant.textDefault, constant.quickMenu);
@@ -115,6 +122,15 @@ function receivedPostback(event) {
 //////////////////////////
 // Sending helpers
 //////////////////////////
+function sendMessageEvent(recipientId, messageEvent) {
+  var menu = {
+    recipient: {
+      id: recipientId
+    },
+    "message":messageEvent
+};
+  callSendAPI(menu);
+}
 
 function sendMessage(recipientId, text, quickReplies) {
   var menu = {
